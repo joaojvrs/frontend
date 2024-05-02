@@ -18,27 +18,27 @@ export class AppComponent {
 
   CREATE_tarefa(descricaoNovaTarefa: string) {
     var novaTarefa = new Tarefa(descricaoNovaTarefa, false);
-    this.http.post<Tarefa>(`${this.apiURL}/api/post`, novaTarefa).subscribe(
+    this.http.post<Tarefa>(`${this.apiURL}/API/post`, novaTarefa).subscribe(
     resultado => { console.log(resultado); this.READ_tarefas(); });
     
    }
 
   READ_tarefas() {
-    this.http.get<Tarefa[]>(`${this.apiURL}/api/getAll`).subscribe(
+    this.http.get<Tarefa[]>(`${this.apiURL}/API/getAll`).subscribe(
     resultado => this.arrayDeTarefas=resultado);
    }
 
   REMOVE_tarefa(tarefaAserRemovida: Tarefa) {
     var indice = this.arrayDeTarefas.indexOf(tarefaAserRemovida);
     var id = this.arrayDeTarefas[indice]._id;
-    this.http.delete<Tarefa>(`${this.apiURL}/api/delete/${id}`).subscribe(
+    this.http.delete<Tarefa>(`${this.apiURL}/API/delete/${id}`).subscribe(
     resultado => { console.log(resultado); this.READ_tarefas(); });
     }
    
     UPDATE_tarefa(tarefaAserModificada: Tarefa) {
       var indice = this.arrayDeTarefas.indexOf(tarefaAserModificada);
       var id = this.arrayDeTarefas[indice]._id;
-      this.http.patch<Tarefa>(`${this.apiURL}/api/update/${id}`,
+      this.http.patch<Tarefa>(`${this.apiURL}/API/update/${id}`,
       tarefaAserModificada).subscribe(
       resultado => { console.log(resultado); this.READ_tarefas(); });
      }
