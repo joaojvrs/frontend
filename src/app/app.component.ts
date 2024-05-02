@@ -12,7 +12,7 @@ export class AppComponent {
   apiURL : string;
 
   constructor(private http: HttpClient) {
-    this.apiURL = 'http://localhost:3000';
+    this.apiURL = 'https://api-tarefas-black.vercel.app';
     this.READ_tarefas();
   }
 
